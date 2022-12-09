@@ -5,6 +5,6 @@ import dashboard from "../../Redux/Reducers/MainDashboard";
 import filters from "../../Redux/Reducers/Filters";
 export default combineReducers({
   auth: loginReducer,
-  dasboard: dashboard,
+  dashboard: dashboard,
   filters: filters,
 });

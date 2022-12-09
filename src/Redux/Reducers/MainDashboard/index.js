@@ -9,10 +9,11 @@ import { handleError } from "../../../middlewares/errorHandler";
 //////////////////////////////////////////////////////////////
 
 const slice = createSlice({
-  name: "dasboard",
+  name: "dashboard",
   initialState: {
     loading: false,
     newsList: null,
+    listByState: "All",
   },
   reducers: {
     gettingNewsRequested: (state, action) => {
@@ -20,7 +21,7 @@ const slice = createSlice({
     },
     gettingNewsSuccess: (state, action) => {
       state.newsList = action.payload;
-
+      state.listByState = action.payload.listByState;
       state.loading = false;
     },
     gettingNewsFailed: (state, action) => {
@@ -35,12 +36,28 @@ const { gettingNewsRequested, gettingNewsSuccess, gettingNewsFailed } =
 /////////////////////////////////////////////////////////////////////
 //                      Actions
 /////////////////////////////////////////////////////////////////////
-export const getTopNews = () => (dispatch) => {
+export const getTopNews = (listBy) => (dispatch, getState) => {
+  let url;
+  switch (listBy) {
+    case "All":
+      url = serverRoutes?.GET_TOP_NEWS_HOME;
+      break;
+    case "World":
+      url = serverRoutes?.GET_TOP_NEWS_WORLD;
+      break;
+    case "Science":
+      url = serverRoutes?.GET_TOP_NEWS_SCIENCE;
+      break;
+    default:
+      break;
+  }
   dispatch(gettingNewsRequested());
-  genericAxiosCall(serverRoutes?.GET_TOP_NEWS, "get", "", "")
+
+  genericAxiosCall(url ? url : serverRoutes?.GET_TOP_NEWS_HOME, "get", "", "")
     .then((res) => {
       if (res.data.status) {
         let data = res.data.results;
+        data.listByState = listBy;
         dispatch(gettingNewsSuccess(data));
       }
     })

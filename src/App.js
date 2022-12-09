@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Home from "./components/pages/Home";
+import Home from "./components/pages/Home/Home";
 import Register from "./components/layout/auth/Register";
 import React, { lazy, Suspense, useEffect } from "react";
 import Login from "./components/layout/auth/Login";

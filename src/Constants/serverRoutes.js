@@ -5,7 +5,10 @@ export const SERVER_URL = process.env.REACT_APP_SERVERURL
 export const serverRoutes = {
   SIGNIN: `${SERVER_URL}/auth/login`,
   SIGNUP: `${SERVER_URL}/auth/register`,
-  GET_TOP_NEWS: "https://api.nytimes.com/svc/topstories/v2/home.json",
+  GET_TOP_NEWS_HOME: "https://api.nytimes.com/svc/topstories/v2/home.json",
+  GET_TOP_NEWS_SCIENCE:
+    "https://api.nytimes.com/svc/topstories/v2/science.json",
+  GET_TOP_NEWS_WORLD: "https://api.nytimes.com/svc/topstories/v2/world.json",
 };
 export const API_KEY = process.env.REACT_APP_API_KEY
   ? process.env.REACT_APP_API_KEY

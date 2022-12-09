@@ -2,7 +2,7 @@ import { lazy } from "react";
 
 import browserRoutes from "../Constants/browserRoutes";
 
-const Home = lazy(() => import("../components/pages/Home"));
+const Home = lazy(() => import("../components/pages/Home/Home"));
 
 const componentsArray = [
   {

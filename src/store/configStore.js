@@ -24,17 +24,7 @@ const persistConfig = {
 };
 
 const pReducers = persistReducer(persistConfig, pReducersForEncryption);
-// let store = configureStore({
-//   reducer: {
-//     pReducers: pReducers,
-//     npReducers: reducer,
-//   },
-//   // middleware: [
-//   //   ...getDefaultMiddleware({
-//   //     serializableCheck: false,
-//   //   }),
-//   // ],
-// });
+
 let store = configureStore({
   reducer: {
     pReducers: pReducers,
