@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 
 import App from "./App";
 
-import store from "./store/configStore";
 import { Provider } from "react-redux";
 import { HelmetProvider } from "react-helmet-async";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
+import store from "./store/configStore";
 let persistor = persistStore(store);
 
 ReactDOM.render(

@@ -1,9 +1,9 @@
 import axios from "axios";
+
 import { toast } from "react-toastify";
 
-import store from "../store/configStore";
-
 import { SERVER_URL, serverRoutes } from "./../Constants/serverRoutes";
+// import configStore from "../store/configStore";
 
 const instance = axios.create({
   baseURL: SERVER_URL,
@@ -12,12 +12,11 @@ const instance = axios.create({
     return params;
   },
 });
-
 instance.interceptors.request.use((x) => {
-  const { applicationToken, domainID, subscriptionID, userToken } =
-    store.getState().pReducers.user;
-  x.headers.Authorization = `Bearer ${userToken}`;
-  x.headers["X-Version"] = "1.0";
+  // const { userToken } = configStore.getState().pReducers.user;
+  // const userToken = window.localStorage.getItem("userToken");
+  // x.headers.Authorization = `Bearer ${userToken}`;
+  // x.headers["X-Version"] = "1.0";
   // x.headers[!domainID ? "verification-api" : "X-Domain"] = domainID;
   // x.headers["X-Subscription"] = subscriptionID;
   // x.headers["userToken"] = userToken;

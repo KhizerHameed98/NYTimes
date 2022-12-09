@@ -53,6 +53,7 @@ export const UserReducer = createSlice({
         ...state,
         userToken: payload,
       };
+      window.localStorage.setItem("userToken", payload);
       return state;
     },
     ClaimMng837ColumnsSetting(state, action) {

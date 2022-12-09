@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 
 import reducer from "./combineReducers/entities";
@@ -24,14 +24,28 @@ const persistConfig = {
 };
 
 const pReducers = persistReducer(persistConfig, pReducersForEncryption);
-export default configureStore({
+// let store = configureStore({
+//   reducer: {
+//     pReducers: pReducers,
+//     npReducers: reducer,
+//   },
+//   // middleware: [
+//   //   ...getDefaultMiddleware({
+//   //     serializableCheck: false,
+//   //   }),
+//   // ],
+// });
+let store = configureStore({
   reducer: {
     pReducers: pReducers,
     npReducers: reducer,
   },
-  middleware: [
-    ...getDefaultMiddleware({
+
+  devTools: process.env.NODE_ENV !== "production",
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
       serializableCheck: false,
     }),
-  ],
 });
+
+export default store;

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import genericAxiosCall from "../../../AxiosConfig/genericAxiosCall";
 export const initialListingState = {
   loading: false,
   cachePagination: {},

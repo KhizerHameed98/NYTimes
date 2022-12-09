@@ -1,9 +1,9 @@
-import { encodeData, encodeData2 } from "../components/Common/Utils";
+import { encodeData } from "../components/Common/Utils";
 import axios from "./axios";
 
 const genericAxiosCall = (url, method, data, params) => {
   return axios({
-    url: `${url}${encodeData2(params)}`,
+    url: `${url}?${encodeData(params)}`,
     method: method,
     data: data,
   });

@@ -141,6 +141,8 @@ export const logoutUserRequest = () => (dispatch) => {
   // saveLogForLogActivity("Successfully logged out...");
 
   window.localStorage.removeItem("persist:root");
+  window.localStorage.removeItem("userToken");
+
   //   localStorage.removeItem("NoOfRecordInTable");
   //   window.localStorage.setItem("logged_in", false);
   // setUserToken("");
