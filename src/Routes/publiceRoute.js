@@ -1,0 +1,32 @@
+import { Route, Redirect } from "react-router-dom";
+
+import { useSelector } from "react-redux";
+// import browserRoute from "./Constants/browserRoutes";
+import browserRoute from "../Constants/browserRoutes";
+
+function PublicRoute({ children, isAuthenticated, ...rest }) {
+  const { userToken } = useSelector((state) => state.pReducers.user);
+
+  // console.log("PublicRoutes_userToken--->>", userToken);
+
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        !userToken ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: browserRoute.INSIGHTS_DASHBOARD,
+              state: { from: location },
+              // pathname: "/",
+            }}
+          />
+        )
+      }
+    />
+  );
+}
+
+export default PublicRoute;
