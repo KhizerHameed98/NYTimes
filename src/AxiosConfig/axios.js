@@ -1,8 +1,8 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-import store from "../Redux/Store";
-import { updateApplicationToken } from "../Redux/Reducers/UserReducer";
+import store from "../store/configStore";
+
 import { SERVER_URL, serverRoutes } from "./../Constants/serverRoutes";
 
 const instance = axios.create({
@@ -16,10 +16,10 @@ const instance = axios.create({
 instance.interceptors.request.use((x) => {
   const { applicationToken, domainID, subscriptionID, userToken } =
     store.getState().pReducers.user;
-  x.headers.Authorization = `Bearer ${applicationToken}`;
+  x.headers.Authorization = `Bearer ${userToken}`;
   x.headers["X-Version"] = "1.0";
-  x.headers[!domainID ? "verification-api" : "X-Domain"] = domainID;
-  x.headers["X-Subscription"] = subscriptionID;
+  // x.headers[!domainID ? "verification-api" : "X-Domain"] = domainID;
+  // x.headers["X-Subscription"] = subscriptionID;
   // x.headers["userToken"] = userToken;
   // x.headers["israr-ahmed"] = "israr-ahmed";
   // x.headers["Access-Control-Allow-Origin"] = "*";
@@ -53,28 +53,28 @@ instance.interceptors.response.use(
       }
     }
 
-    if (error?.response?.status === 401) {
-      const isRememberChecked = store.getState().pReducers.user.rememberMe;
-      if (
-        typeof isRememberChecked !== "undefined" &&
-        typeof isRememberChecked !== "object" &&
-        isRememberChecked !== "false" &&
-        isRememberChecked !== "null"
-      ) {
-        axios.get(serverRoutes.APPLICATION_TOKEN).then((res) => {
-          const { data: response } = res;
-          const { data } = response;
-          const token = data.accessToken;
-          store.dispatch(updateApplicationToken(token));
-          setTimeout(() => {
-            // window.location.reload();
-          }, [800]);
-        });
-      } else {
-        store.dispatch(updateApplicationToken(""));
-        // window.location.href = "/login";
-      }
-    }
+    // if (error?.response?.status === 401) {
+    //   const isRememberChecked = store.getState().pReducers.user.rememberMe;
+    //   if (
+    //     typeof isRememberChecked !== "undefined" &&
+    //     typeof isRememberChecked !== "object" &&
+    //     isRememberChecked !== "false" &&
+    //     isRememberChecked !== "null"
+    //   ) {
+    //     axios.get(serverRoutes.APPLICATION_TOKEN).then((res) => {
+    //       const { data: response } = res;
+    //       const { data } = response;
+    //       const token = data.accessToken;
+    //       store.dispatch(updateApplicationToken(token));
+    //       setTimeout(() => {
+    //         // window.location.reload();
+    //       }, [800]);
+    //     });
+    //   } else {
+    //     store.dispatch(updateApplicationToken(""));
+    //     // window.location.href = "/login";
+    //   }
+    // }
     return Promise.reject(error);
   }
 );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import CameraIcon from "@material-ui/icons/PhotoCamera";
@@ -14,6 +14,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 import Loading from "../Common/Loading";
+import { useDispatch } from "react-redux";
+import { getTopNews } from "../../Redux/Reducers/MainDashboard/dashboardSlice";
 
 function Copyright() {
   return (
@@ -62,9 +64,13 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function Album() {
+export default function Home() {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //   dispatch(getTopNews());
+  // }, []);
   return (
     <React.Fragment>
       <CssBaseline />

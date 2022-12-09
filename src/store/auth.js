@@ -8,6 +8,7 @@ import {
 } from "../Redux/Reducers/UserReducer";
 import { toast } from "react-toastify";
 import browserRoute from "../Constants/browserRoutes";
+import { handleError } from "../middlewares/errorHandler";
 
 //////////////////////////////////////////////////////////////
 //                      Reducers
@@ -98,10 +99,7 @@ export const loginRequest = (data) => (dispatch) => {
     })
     .catch((error) => {
       dispatch(loginFailed());
-
-      toast.error("User Doesn't exist", {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
+      handleError(error, "User doesn't exist");
     });
 };
 
@@ -127,11 +125,8 @@ export const registerRequest = (data) => (dispatch) => {
       });
     })
     .catch((error) => {
-      console.log("hey khizer error===", error);
       dispatch(userRegisteringFailed());
-      toast.error("Something went wrong", {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
+      handleError(error, "Something went wrong");
     });
 };
 

@@ -73,9 +73,6 @@ export default function Register(props) {
     },
   };
 
-  useEffect(() => {
-    console.log("hey khizer===", loading);
-  }, [loading]);
   const [data, setData] = useState(initialState);
   const [loginError, setLoginError] = useState(null);
 
