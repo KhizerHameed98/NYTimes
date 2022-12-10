@@ -1,8 +1,16 @@
 import React from "react";
 
-const ToolBar = ({ listBy, setListBy, listByEnum, toolChangeHandle }) => {
+const ToolBar = ({
+  listBy,
+  setListBy,
+  listByEnum,
+  toolChangeHandle,
+  loading,
+}) => {
   const hanlder = (value) => {
-    toolChangeHandle(value);
+    if (!loading) {
+      toolChangeHandle(value);
+    }
   };
   return (
     <div className="dashboard-main-tool-bar" style={{ marginTop: "30px" }}>

@@ -6,9 +6,11 @@ import { useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import browserRoute from "../../../Constants/browserRoutes";
 import Loading from "../../layout/Loading";
-import { Button, Grid, makeStyles, Paper } from "@material-ui/core";
+import { Button, Grid, IconButton, makeStyles, Paper } from "@material-ui/core";
 import DrawerSideBar from "../../layout/articleDetail/sideBar";
 import { comments } from "../../Common/Comments/mockData";
+
+import LaunchIcon from "@material-ui/icons/Launch";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -34,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  shareIcon: {
+    cursor: "pointer",
+  },
 }));
 export default function ArticleDetail() {
   const classes = useStyles();
@@ -56,6 +61,18 @@ export default function ArticleDetail() {
     } else {
       history.push(browserRoute?.HOME);
     }
+  };
+
+  const getTags = (arr) => {
+    let temp = "";
+    arr.map((item, index) => {
+      if (!temp) {
+        temp = item;
+      } else {
+        temp = temp + ", " + item;
+      }
+    });
+    return temp;
   };
 
   useEffect(() => {
@@ -86,9 +103,22 @@ export default function ArticleDetail() {
                 className="mt-5 pt-5 pb-5 "
                 style={{ justifyContent: "center", alignItems: "center" }}
               >
+                <h5 style={{ color: "#3f51b5" }}>
+                  {article?.section.toUpperCase()},{" "}
+                  {article?.subsection.toUpperCase()}
+                </h5>
                 <h1>{article?.title}</h1>
                 <br />
                 <h3>{article?.abstract}</h3>
+
+                <a
+                  className="no-decoration-link"
+                  href={article?.url ? article?.url : "#"}
+                >
+                  <IconButton className="shareIcon">
+                    <LaunchIcon />
+                  </IconButton>
+                </a>
               </Typography>
             </Container>
             <div className="img-container">
@@ -114,30 +144,57 @@ export default function ArticleDetail() {
                         : ""}
                     </span>
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid item xs={12} lg={6} md={6}>
                     {article?.byline}{" "}
                     {article?.created_date &&
                       `(${new Date(article?.created_date)
                         .toISOString()
                         .slice(0, 10)})`}
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid item xs={12} lg={6} md={6}>
                     {article?.multimedia?.length > 0
                       ? article?.multimedia[0]?.copyright + "© "
                       : ""}
                   </Grid>
-                  <Grid item xs={6}>
-                    <Paper className={classes.paper}>xs=6</Paper>
+                  <Grid item xs={12} lg={12} md={12}>
+                    {article?.published_date &&
+                      `Published date: ${new Date(article?.published_date)
+                        .toISOString()
+                        .slice(0, 10)}`}
                   </Grid>
-                  <Grid item xs={3}>
-                    <Paper className={classes.paper}>xs=3</Paper>
+                  <Grid item xs={12} lg={12} md={12}>
+                    {article?.kicker && `Kicker: ${article?.kicker}`}
                   </Grid>
-                  <Grid item xs={3}>
-                    <Paper className={classes.paper}>xs=3</Paper>
+                  <Grid item xs={12} lg={6} md={6}>
+                    <ul className="tagsList">
+                      <li>
+                        {article?.des_facet &&
+                          article?.des_facet?.length > 0 &&
+                          `des_facet: ${getTags(article?.des_facet)}`}
+                      </li>
+                      <li>
+                        {article?.per_facet &&
+                          article?.per_facet?.length > 0 &&
+                          `per_facet: ${getTags(article?.per_facet)}`}
+                      </li>
+                    </ul>
                   </Grid>
-                  <Grid item xs={3}>
-                    <Paper className={classes.paper}>xs=3</Paper>
+
+                  <Grid item xs={12} lg={6} md={6}>
+                    <ul className="tagsList">
+                      <li>
+                        {article?.org_facet &&
+                          article?.org_facet?.length > 0 &&
+                          `org_facet: ${getTags(article?.org_facet)}`}
+                      </li>
+                      <li>
+                        {article?.geo_facet &&
+                          article?.geo_facet?.length > 0 &&
+                          `geo_facet: ${getTags(article?.geo_facet)}`}
+                      </li>
+                    </ul>
                   </Grid>
+
                   <Grid item xs={12}>
                     <DrawerSideBar comments={comments} />
                   </Grid>
