@@ -8,6 +8,7 @@ import browserRoute from "../../../Constants/browserRoutes";
 import Loading from "../../layout/Loading";
 import { Button, Grid, makeStyles, Paper } from "@material-ui/core";
 import DrawerSideBar from "../../layout/articleDetail/sideBar";
+import { comments } from "../../Common/Comments/mockData";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -138,7 +139,7 @@ export default function ArticleDetail() {
                     <Paper className={classes.paper}>xs=3</Paper>
                   </Grid>
                   <Grid item xs={12}>
-                    <DrawerSideBar />
+                    <DrawerSideBar comments={comments} />
                   </Grid>
                 </Grid>
               </div>
