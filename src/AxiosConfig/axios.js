@@ -2,7 +2,9 @@ import axios from "axios";
 
 import { toast } from "react-toastify";
 
-import { SERVER_URL, serverRoutes } from "./../Constants/serverRoutes";
+import { SERVER_URL } from "./../Constants/serverRoutes";
+// import {  serverRoutes } from "./../Constants/serverRoutes";
+
 // import configStore from "../store/configStore";
 
 const instance = axios.create({
@@ -17,10 +19,7 @@ instance.interceptors.request.use((x) => {
   // const userToken = window.localStorage.getItem("userToken");
   // x.headers.Authorization = `Bearer ${userToken}`;
   // x.headers["X-Version"] = "1.0";
-  // x.headers[!domainID ? "verification-api" : "X-Domain"] = domainID;
-  // x.headers["X-Subscription"] = subscriptionID;
   // x.headers["userToken"] = userToken;
-  // x.headers["israr-ahmed"] = "israr-ahmed";
   // x.headers["Access-Control-Allow-Origin"] = "*";
   // x.headers["Access-Control-Allow-Credentials"] = "true";
   // x.headers["Content-Type"] = "application/json'";

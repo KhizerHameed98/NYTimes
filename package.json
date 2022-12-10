@@ -17,6 +17,7 @@
     "joi": "^17.4.0",
     "joi-objectid": "^3.0.1",
     "joi-password-complexity": "^5.1.0",
+    "lodash": "^4.17.21",
     "mdbreact": "^5.0.1",
     "moment": "^2.29.1",
     "react": "^16.14.0",

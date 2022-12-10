@@ -1,19 +1,14 @@
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Route,
-  Switch,
-} from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Register from "./components/layout/auth/Register";
-import React, { lazy, Suspense, useEffect } from "react";
+import React, { Suspense } from "react";
 import Login from "./components/layout/auth/Login";
 import Layout from "./HOC/Layout";
 import PublicRoute from "./HOC/publiceRoute";
 import RoleBaseAccessRoute from "./Routes/roleBaseAccessRoute";
-import { CircularProgress, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Loading from "./components/layout/Loading";
 
 function App() {

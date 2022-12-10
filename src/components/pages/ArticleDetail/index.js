@@ -3,10 +3,10 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { useSelector } from "react-redux";
-import { NavLink, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import browserRoute from "../../../Constants/browserRoutes";
 import Loading from "../../layout/Loading";
-import { Button, Grid, IconButton, makeStyles, Paper } from "@material-ui/core";
+import { Grid, IconButton, makeStyles } from "@material-ui/core";
 import DrawerSideBar from "../../layout/articleDetail/sideBar";
 import { comments } from "../../Common/Comments/mockData";
 
@@ -44,9 +44,7 @@ export default function ArticleDetail() {
   const classes = useStyles();
   const { id } = useParams();
   const history = useHistory();
-  const { newsList, listByState } = useSelector(
-    (state) => state.npReducers.dashboard
-  );
+  const { newsList } = useSelector((state) => state.npReducers.dashboard);
   const [loading, setLoading] = useState(true);
   const [article, setArticle] = useState({});
   const validateId = () => {
@@ -65,7 +63,7 @@ export default function ArticleDetail() {
 
   const getTags = (arr) => {
     let temp = "";
-    arr.map((item, index) => {
+    let res = arr.map((item, index) => {
       if (!temp) {
         temp = item;
       } else {
@@ -82,10 +80,7 @@ export default function ArticleDetail() {
       setLoading(false);
       setArticle(newsList[id]);
     }
-  }, [id]);
-  useEffect(() => {
-    console.log("hey khizer===", article);
-  }, [article]);
+  }, []);
 
   return (
     <React.Fragment>

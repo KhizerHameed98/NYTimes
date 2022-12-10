@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import Button from "@material-ui/core/Button";
+import React, { useCallback, useEffect, useState } from "react";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
@@ -8,8 +7,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Loading from "../../layout/Loading";
 import { useDispatch, useSelector } from "react-redux";
+import { debounce } from "lodash";
+
 import { getTopNews } from "../../../Redux/Reducers/MainDashboard";
-import ToolBar from "../../layout/timeLineToolBar";
 
 import ListCard from "../../layout/cards";
 import SearchBar from "../../layout/home/searchBar";
@@ -49,6 +49,8 @@ const useStyles = makeStyles((theme) => ({
 export default function ArticleHome() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const [query, setQuery] = useState("");
+
   const { loading, newsList, listByState } = useSelector(
     (state) => state.npReducers.dashboard
   );
@@ -60,6 +62,11 @@ export default function ArticleHome() {
   const [listBy, setListBy] = useState(
     listByState ? listByState : listByEnum?.All
   );
+  const changeHandler = (event) => {
+    console.log("hey khizer===", event);
+    setQuery(event.target.value);
+  };
+  const debouncedChangeHandler = useCallback(debounce(changeHandler, 500), []);
 
   useEffect(() => {
     if (!newsList) {
@@ -87,7 +94,7 @@ export default function ArticleHome() {
               color="textPrimary"
               gutterBottom
             >
-              The New York Times
+              Explore NYTimes
             </Typography>
             <Typography
               variant="h5"
@@ -95,15 +102,15 @@ export default function ArticleHome() {
               color="textSecondary"
               paragraph
             >
-              The New York Times is an American daily newspaper based in New
-              York City with a worldwide readership reported in 2020 to be a
-              declining 840,000 paid print subscribers, and a growing 6 million
-              paid digital subscribers. It also is a producer of popular
-              podcasts such as The Daily.
+              The New York Times Article Archive can be accessed through archive
+              search at nytimes.com. Archive articles come in several formats
+              depending on the age of the article: Articles published after 1980
+              are available in full-text. Articles from 1851-1980 are available
+              either in full-text or partial articles.
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justifyContent="center">
-                <SearchBar />
+                <SearchBar onChangeHandler={debouncedChangeHandler} />
               </Grid>
             </div>
           </Container>

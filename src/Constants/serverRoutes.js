@@ -9,6 +9,8 @@ export const serverRoutes = {
   GET_TOP_NEWS_SCIENCE:
     "https://api.nytimes.com/svc/topstories/v2/science.json",
   GET_TOP_NEWS_WORLD: "https://api.nytimes.com/svc/topstories/v2/world.json",
+  GET_ARTICLE_SEARCH:
+    "https://api.nytimes.com/svc/search/v2/articlesearch.json",
 };
 export const API_KEY = process.env.REACT_APP_API_KEY
   ? process.env.REACT_APP_API_KEY

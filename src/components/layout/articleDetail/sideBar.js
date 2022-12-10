@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
-import { Grid, IconButton } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import CommentsCard from "./commentsCard";
 

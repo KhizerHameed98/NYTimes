@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
-import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
-import DirectionsIcon from "@material-ui/icons/Directions";
+// import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchBar() {
+export default function SearchBar({ onChangeHandler }) {
   const classes = useStyles();
 
   return (
@@ -36,9 +34,10 @@ export default function SearchBar() {
       <InputBase
         className={classes.input}
         placeholder="What you are looking for?"
+        autoComplete="hello"
         inputProps={{ "aria-label": "What you are looking for?" }}
         onChange={(event) => {
-          console.log("hey khizer==", event.target.value);
+          onChangeHandler(event.target.value);
         }}
       />
       <IconButton

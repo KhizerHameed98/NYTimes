@@ -9,7 +9,6 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import browserRoute from "../../../Constants/browserRoutes";
 
 const ListCard = ({ data, classes }) => {
   return (
