@@ -15,7 +15,7 @@ import PasswordComplexity from "joi-password-complexity";
 import { useDispatch, useSelector } from "react-redux";
 import Joi from "joi";
 
-import { registerRequest } from "../../../store/auth";
+import { registerRequest } from "../../../Redux/store/auth";
 import { CircularProgress } from "@material-ui/core";
 import browserRoute from "../../../Constants/browserRoutes";
 

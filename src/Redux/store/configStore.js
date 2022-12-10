@@ -5,7 +5,7 @@ import reducer from "./combineReducers/entities";
 import storage from "redux-persist/lib/storage";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import { persistReducer } from "redux-persist";
-import UserReducer from "../Redux/Reducers/UserReducer";
+import UserReducer from "../Reducers/UserReducer";
 
 const pReducersForEncryption = combineReducers({
   user: UserReducer,

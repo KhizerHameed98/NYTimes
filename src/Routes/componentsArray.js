@@ -4,6 +4,8 @@ import browserRoutes from "../Constants/browserRoutes";
 
 const Home = lazy(() => import("../components/pages/Home/index"));
 const ArticleDetail = lazy(() => import("../components/pages/ArticleDetail"));
+const ArticleHome = lazy(() => import("../components/pages/ArticleHome"));
+
 const componentsArray = [
   {
     path: browserRoutes?.HOME,
@@ -16,6 +18,12 @@ const componentsArray = [
     // exact: true,
     name: "ArticleDetail",
     component: ArticleDetail,
+  },
+  {
+    path: browserRoutes?.ARTICLE_HOME,
+    // exact: true,
+    name: "ArticleHome",
+    component: ArticleHome,
   },
 ];
 

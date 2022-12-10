@@ -103,7 +103,6 @@ export default function Home() {
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justifyContent="center">
-                <SearchBar />
                 <ToolBar
                   listBy={listBy}
                   setListBy={setListBy}

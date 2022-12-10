@@ -4,6 +4,8 @@ const browserRoute = {
   LOGIN: "/auth",
   SIGNUP: "/register",
   ARTICLE_DETAIL: "/article-detail/:id",
+  ARTICLE_HOME: "/article-home",
+
   HOME: "/",
 };
 

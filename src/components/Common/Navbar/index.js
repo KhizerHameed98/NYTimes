@@ -4,18 +4,15 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import Badge from "@material-ui/core/Badge";
+
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
+
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { useDispatch } from "react-redux";
-import { logoutUserRequest } from "../../../store/auth";
+import { logoutUserRequest } from "../../../Redux/store/auth";
 import { NavLink } from "react-router-dom";
 import browserRoute from "../../../Constants/browserRoutes";
 
@@ -181,7 +178,7 @@ export default function Navbar() {
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">
               <NavLink
-                to={"#"}
+                to={browserRoute?.ARTICLE_HOME}
                 style={{ textDecoration: "none", color: "white" }}
               >
                 <Typography className={classes.title} variant="h6" noWrap>

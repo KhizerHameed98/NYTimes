@@ -1,14 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { serverRoutes } from "../Constants/serverRoutes";
 import {
   updateApplicationToken,
   updateUserToken,
   userData,
-} from "../Redux/Reducers/UserReducer";
+} from "../Reducers/UserReducer";
+
 import { toast } from "react-toastify";
-import browserRoute from "../Constants/browserRoutes";
-import { handleError } from "../middlewares/errorHandler";
+import { serverRoutes } from "../../Constants/serverRoutes";
+import browserRoute from "../../Constants/browserRoutes";
+import { handleError } from "../../middlewares/errorHandler";
 
 //////////////////////////////////////////////////////////////
 //                      Reducers

@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Home() {
+export default function ArticleHome() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { loading, newsList, listByState } = useSelector(
@@ -62,7 +62,9 @@ export default function Home() {
   );
 
   useEffect(() => {
-    dispatch(getTopNews(listBy));
+    if (!newsList) {
+      dispatch(getTopNews(listBy));
+    }
   }, []);
 
   const toolChangeHandle = (value) => {
@@ -101,23 +103,7 @@ export default function Home() {
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justifyContent="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Main call to action
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Secondary action
-                  </Button>
-                </Grid>
                 <SearchBar />
-                <ToolBar
-                  listBy={listBy}
-                  setListBy={setListBy}
-                  listByEnum={listByEnum}
-                  toolChangeHandle={toolChangeHandle}
-                />
               </Grid>
             </div>
           </Container>
