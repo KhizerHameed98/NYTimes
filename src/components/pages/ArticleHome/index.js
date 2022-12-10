@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -7,12 +6,13 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Link from "@material-ui/core/Link";
 import Loading from "../../layout/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { getTopNews } from "../../../Redux/Reducers/MainDashboard";
-import { Card, CardActions, CardContent, CardMedia } from "@material-ui/core";
 import ToolBar from "../../layout/timeLineToolBar";
+
+import ListCard from "../../layout/cards";
+import SearchBar from "../../layout/home/searchBar";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -78,6 +78,7 @@ export default function Home() {
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography
+              className="mt-3"
               component="h1"
               variant="h2"
               align="center"
@@ -92,9 +93,11 @@ export default function Home() {
               color="textSecondary"
               paragraph
             >
-              Something short and leading about the collection below—its
-              contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don&apos;t simply skip over it entirely.
+              The New York Times is an American daily newspaper based in New
+              York City with a worldwide readership reported in 2020 to be a
+              declining 840,000 paid print subscribers, and a growing 6 million
+              paid digital subscribers. It also is a producer of popular
+              podcasts such as The Daily.
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justifyContent="center">
@@ -108,6 +111,7 @@ export default function Home() {
                     Secondary action
                   </Button>
                 </Grid>
+                <SearchBar />
                 <ToolBar
                   listBy={listBy}
                   setListBy={setListBy}
@@ -124,44 +128,7 @@ export default function Home() {
             {loading ? (
               <Loading />
             ) : (
-              <>
-                {newsList && newsList?.length > 0
-                  ? newsList.map((data, index) => (
-                      <Grid item key={index} xs={12} sm={6} md={4}>
-                        <Card className={classes.card}>
-                          <CardMedia
-                            className={classes.cardMedia}
-                            image={
-                              data?.multimedia && data?.multimedia?.length > 0
-                                ? data?.multimedia[1]?.url
-                                : ""
-                            }
-                            title="Image title"
-                          />
-                          <CardContent className={classes.cardContent}>
-                            <Typography
-                              gutterBottom
-                              variant="h6"
-                              component="h1"
-                              style={{ fontWeight: "bold" }}
-                            >
-                              {data?.title}
-                            </Typography>
-                            <Typography>{data?.abstract}</Typography>
-                          </CardContent>
-                          <CardActions>
-                            <Button size="small" color="primary">
-                              View
-                            </Button>
-                            <Button size="small" color="primary">
-                              Edit
-                            </Button>
-                          </CardActions>
-                        </Card>
-                      </Grid>
-                    ))
-                  : null}
-              </>
+              <ListCard data={newsList} classes={classes} />
             )}
           </Grid>
         </Container>

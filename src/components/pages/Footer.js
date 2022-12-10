@@ -1,6 +1,7 @@
 import { makeStyles, Typography } from "@material-ui/core";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import browserRoute from "../../Constants/browserRoutes";
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
@@ -38,9 +39,9 @@ const Footer = () => {
     return (
       <Typography variant="body2" color="textSecondary" align="center">
         {"Copyright © "}
-        <Link color="inherit" href="#">
+        <NavLink color="inherit" to={browserRoute?.HOME}>
           Your Website
-        </Link>{" "}
+        </NavLink>{" "}
         {new Date().getFullYear()}
         {"."}
       </Typography>
@@ -49,7 +50,7 @@ const Footer = () => {
   return (
     <>
       {/* Footer */}
-      <footer className={classes.footer}>
+      <footer className={classes.footer} style={{ marginTop: "100px" }}>
         <Typography variant="h6" align="center" gutterBottom>
           Footer
         </Typography>

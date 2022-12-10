@@ -3,6 +3,7 @@ const browserRoute = {
   BLANK_LINK: "#!",
   LOGIN: "/auth",
   SIGNUP: "/register",
+  ARTICLE_DETAIL: "/article-detail/:id",
   HOME: "/",
 };
 

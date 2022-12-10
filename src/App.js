@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Home from "./components/pages/Home/Home";
 import Register from "./components/layout/auth/Register";
 import React, { lazy, Suspense, useEffect } from "react";
 import Login from "./components/layout/auth/Login";
@@ -15,6 +14,7 @@ import Layout from "./HOC/Layout";
 import PublicRoute from "./HOC/publiceRoute";
 import RoleBaseAccessRoute from "./Routes/roleBaseAccessRoute";
 import { CircularProgress, Grid } from "@material-ui/core";
+import Loading from "./components/layout/Loading";
 
 function App() {
   return (
@@ -38,7 +38,7 @@ function App() {
                 <div className="mt-3" style={{ position: "relative" }}>
                   <div className={"data-loading"}>
                     <div className="cliam-ui-table-2">
-                      <CircularProgress color="secondary" />
+                      <Loading />
                     </div>
                   </div>
                 </div>

@@ -1,10 +1,17 @@
 import React from "react";
-import { CircularProgress, Grid } from "@material-ui/core";
-
+import { CircularProgress, Grid, makeStyles } from "@material-ui/core";
+const useStyles = makeStyles(() => ({
+  root: {
+    display: "flex",
+    justifyContent: "center",
+  },
+}));
 const Loading = ({ compHeight }) => {
+  const classes = useStyles();
+
   return (
     <Grid container spacing={3} className="mt-1">
-      <Grid item xs={12}>
+      <Grid item xs={12} className={classes.root}>
         <div className="mt-3" style={{ position: "relative" }}>
           <div>
             <div>

@@ -15,9 +15,9 @@ import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { useDispatch } from "react-redux";
-import { logoutUserRequest } from "../../store/auth";
+import { logoutUserRequest } from "../../../store/auth";
 import { NavLink } from "react-router-dom";
-import browserRoute from "../../Constants/browserRoutes";
+import browserRoute from "../../../Constants/browserRoutes";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -27,12 +27,12 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
     fontFamily: "nyt-imperial,georgia,'times new roman',times,serif",
   },
+
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function Navbar() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -180,15 +180,16 @@ export default function PrimarySearchAppBar() {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
+              <NavLink
+                to={"#"}
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <Typography className={classes.title} variant="h6" noWrap>
+                  Articles
+                </Typography>
+              </NavLink>
             </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+
             <IconButton
               edge="end"
               aria-label="account of current user"
