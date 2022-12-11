@@ -92,7 +92,16 @@ export const loginRequest = (data) => (dispatch) => {
     data: data,
   })
     .then((res) => {
+      let d = {
+        userToken: res?.data?.access_token,
+        email: data?.email,
+        password: data?.password,
+      };
+      // setInterval(function () {
+      //   console.log("hey khizer ");
+      // }, 3000);
       dispatch(userData(res?.data?.access_token));
+
       dispatch(loginReceived());
       toast.success("Logged In Successfully", {
         position: toast.POSITION.BOTTOM_RIGHT,

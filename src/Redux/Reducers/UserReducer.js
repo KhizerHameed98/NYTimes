@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   userToken: "",
+  email: "",
+  password: "",
   searchHistory: [],
 };
 const searchLimit = 5;
