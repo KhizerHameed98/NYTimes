@@ -1,10 +1,10 @@
-# React-Redux Boilerplate
+# NYTimes App
 
 Assignment React-App to fetch NYTimes api and render the output accordingly
 
 ## Demo
 
-[A demo is worth a thousand words](https://fkhadra.github.io/react-toastify/introduction)
+[A demo is worth a thousand words](https://ny-times-2.vercel.app)
 
 ## Features
 
