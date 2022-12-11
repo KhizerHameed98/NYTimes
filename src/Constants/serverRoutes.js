@@ -15,4 +15,4 @@ export const serverRoutes = {
 };
 export const API_KEY = process.env.REACT_APP_API_KEY
   ? process.env.REACT_APP_API_KEY
-  : "Pq1xoEMDbJArCZrzJT10XvwZEc6DOW00";
+  : "ncz2cdAWX9gKfv3ER17403MkLeoGhmAq";

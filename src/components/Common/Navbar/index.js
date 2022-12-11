@@ -12,7 +12,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { useDispatch } from "react-redux";
-import { logoutUserRequest } from "../../../Redux/store/auth";
+import { logoutUserRequest } from "../../../Redux/Reducers/Auth/auth";
 import { NavLink } from "react-router-dom";
 import browserRoute from "../../../Constants/browserRoutes";
 

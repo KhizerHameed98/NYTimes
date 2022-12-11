@@ -1,16 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import {
-  logouttoInitial,
-  updateUserToken,
-  userData,
-} from "../Reducers/UserReducer";
+import { logouttoInitial, updateUserToken, userData } from "../UserReducer";
 
 import { toast } from "react-toastify";
-import { serverRoutes } from "../../Constants/serverRoutes";
-import browserRoute from "../../Constants/browserRoutes";
-import { handleError } from "../../middlewares/errorHandler";
-import { decodePassword, encodePassword } from "../../components/Common/Utils";
+import { serverRoutes } from "../../../Constants/serverRoutes";
+import browserRoute from "../../../Constants/browserRoutes";
+import { handleError } from "../../../middlewares/errorHandler";
+import {
+  decodePassword,
+  encodePassword,
+} from "../../../components/Common/Utils";
 
 //////////////////////////////////////////////////////////////
 //                      Reducers

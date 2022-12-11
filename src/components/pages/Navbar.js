@@ -15,7 +15,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { useDispatch } from "react-redux";
-import { logoutUserRequest } from "../../store/auth";
+import { logoutUserRequest } from "../../Redux/Reducers/Auth/auth";
 import { NavLink } from "react-router-dom";
 import browserRoute from "../../Constants/browserRoutes";
 

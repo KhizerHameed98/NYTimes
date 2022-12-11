@@ -24,27 +24,30 @@ Assignment React-App to fetch NYTimes api and render the output accordingly
    git clone https://github.com/KhizerHameed98/NYTimes.git
    ```
 
-3. From the project's root directory, install the required packages (dependencies):
+3. Change the name of example.env file to .env .
+
+4. To run the testing, you can run:
 
    ```sh
-   npm install
+   # it will place all files needed for deployment into the /dist directory
+   npm run test
    ```
 
-4. To run and test the app on your local machine (http://localhost:3000):
+5. To run and test the app on your local machine (http://localhost:3000):
 
    ```sh
    # it will start a server instance and begin listening for connections from localhost on port 8080
    npm run start
    ```
 
-5. To build/deploy the app, you can run:
+6. To build/deploy the app, you can run:
 
    ```sh
    # it will place all files needed for deployment into the /dist directory
    npm run build
    ```
 
-6. To run the testing, you can run:
+7. To run the testing, you can run:
 
    ```sh
    # it will place all files needed for deployment into the /dist directory

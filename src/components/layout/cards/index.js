@@ -13,7 +13,7 @@ import NoRecordFound from "../../Common/NoRecordFound";
 
 const ListCard = ({ data, classes }) => {
   return (
-    <div data-testid={`homeCard`}>
+    <>
       {data && data?.length > 0 ? (
         data.map((data, index) => (
           <Grid item key={index} xs={12} sm={6} md={4}>
@@ -51,7 +51,7 @@ const ListCard = ({ data, classes }) => {
       ) : (
         <NoRecordFound />
       )}
-    </div>
+    </>
   );
 };
 
