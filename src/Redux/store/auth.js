@@ -133,7 +133,6 @@ export const registerRequest = (data) => (dispatch) => {
 
 export const logoutUserRequest = () => (dispatch) => {
   // window.localStorage.clear();
-  // console.log("Logout_func--->>");
 
   dispatch(updateUserToken(""));
   dispatch(logouttoInitial());
@@ -143,11 +142,5 @@ export const logoutUserRequest = () => (dispatch) => {
 
   window.localStorage.removeItem("persist:root");
   window.localStorage.removeItem("userToken");
-
-  //   localStorage.removeItem("NoOfRecordInTable");
-  //   window.localStorage.setItem("logged_in", false);
-  // setUserToken("");
-
-  // history.push("/");
   window.location.href = browserRoute?.LOGIN;
 };

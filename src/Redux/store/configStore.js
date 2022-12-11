@@ -16,9 +16,7 @@ const persistConfig = {
   transforms: [
     encryptTransform({
       secretKey: "my-super-secret-key",
-      onError: function (error) {
-        // console.log("error occured while encryption");
-      },
+      onError: function (error) {},
     }),
   ],
 };

@@ -1,9 +1,6 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 import InputBase from "@material-ui/core/InputBase";
-import IconButton from "@material-ui/core/IconButton";
-import SearchIcon from "@material-ui/icons/Search";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     borderColor: "black",
     padding: "10px",
     borderRadius: "50px",
+    boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)",
   },
   iconButton: {
     padding: 10,
@@ -39,7 +37,7 @@ export default function SearchBar({
   const classes = useStyles();
 
   return (
-    <div component="form">
+    <div>
       <Autocomplete
         freeSolo
         id="combo-box-demo"

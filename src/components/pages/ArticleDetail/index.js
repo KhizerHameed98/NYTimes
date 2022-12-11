@@ -63,7 +63,7 @@ export default function ArticleDetail() {
 
   const getTags = (arr) => {
     let temp = "";
-    let res = arr.map((item, index) => {
+    arr.map((item, index) => {
       if (!temp) {
         temp = item;
       } else {

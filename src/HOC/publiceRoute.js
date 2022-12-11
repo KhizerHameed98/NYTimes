@@ -7,8 +7,6 @@ import browserRoute from "../Constants/browserRoutes";
 function PublicRoute({ children, isAuthenticated, ...rest }) {
   const { userToken } = useSelector((state) => state.pReducers.user);
 
-  // console.log("PublicRoutes_userToken--->>", userToken);
-
   return (
     <Route
       {...rest}
@@ -18,7 +16,7 @@ function PublicRoute({ children, isAuthenticated, ...rest }) {
         ) : (
           <Redirect
             to={{
-              pathname: browserRoute.INSIGHTS_DASHBOARD,
+              pathname: browserRoute.HOME,
               state: { from: location },
               // pathname: "/",
             }}

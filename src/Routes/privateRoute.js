@@ -5,11 +5,7 @@ import { useSelector } from "react-redux";
 import browserRoute from "../Constants/browserRoutes";
 
 const PrivateRoute = ({ component: Component, access, ...rest }) => {
-  // console.log("PrivateRoute-->>");
-
   const { userToken } = useSelector((state) => state.pReducers.user);
-  // console.log("roles--->>", roles);
-  // console.log("access--->>", access);
 
   return (
     <>

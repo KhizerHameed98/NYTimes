@@ -3,8 +3,6 @@ import componentsArray from "./componentsArray";
 import PrivateRoute from "./privateRoute";
 
 const RoleBaseAccessRoute = () => {
-  // console.log("RoleBaseAccessRoute-->>");
-
   const menu = componentsArray.map((route, index) => {
     return route.component ? (
       <PrivateRoute

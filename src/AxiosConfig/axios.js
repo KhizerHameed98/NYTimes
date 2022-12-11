@@ -35,13 +35,8 @@ instance.interceptors.response.use(
   },
   function (error) {
     if (error?.response) {
-      // console.log("error--->>", error?.response);
-
       if (error?.response?.status === 400 || error?.response?.status === 401) {
-        // console.log("error_if--->>", error?.response?.status);
-        // do nothing
       } else {
-        // console.log("error_else--->>", error?.response?.status);
         toast.error(
           `${error?.response?.status} - ${error?.response?.statusText}`,
           {

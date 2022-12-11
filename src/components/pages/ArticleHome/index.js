@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { debounce } from "lodash";
 
 import SearchBar from "../../layout/home/searchBar";
-import Pagination from "../../Common/Pagination";
 import { getArticleByQuery } from "../../../Redux/Reducers/ArticleDashboard";
 import ArticleCard from "../../layout/articleHome/articleCard";
 
