@@ -96,7 +96,6 @@ export const loginRequest = (data) => (dispatch) => {
         email: data?.email,
         password: encodePassword(data?.password),
       };
-      refreshToken(obj);
 
       dispatch(userData(obj));
 
@@ -162,7 +161,6 @@ const refreshToken = (user) => {
 
 const getToken = (user) => {
   const data = { email: user.email, password: decodePassword(user.password) };
-  console.log("hey khizer===", data);
   // axios({
   //   url: serverRoutes?.SIGNIN,
   //   method: "POST",

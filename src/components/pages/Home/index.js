@@ -74,7 +74,7 @@ export default function Home() {
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
-          <Container maxWidth="sm">
+          <Container data-testid={`homeCard`} maxWidth="sm">
             <Typography
               className="mt-3"
               component="h1"
