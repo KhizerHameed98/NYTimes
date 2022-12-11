@@ -52,3 +52,9 @@ Assignment React-App to fetch NYTimes api and render the output accordingly
    # it will place all files needed for deployment into the /dist directory
    npm run test
    ```
+
+8. You have to run the server if it's not running already and provide its baseURL to .env file:
+
+   ```sh
+   https://github.com/techiediaries/fake-api-jwt-json-server
+   ```
