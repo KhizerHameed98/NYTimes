@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Button from "@material-ui/core/Button";
-
+import { useDispatch, useSelector } from "react-redux";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Loading from "../../layout/Loading";
-import { useDispatch, useSelector } from "react-redux";
 import { getTopNews } from "../../../Redux/Reducers/MainDashboard";
 import ToolBar from "../../layout/timeLineToolBar";
-
+import Loading from "../../layout/Loading";
 import ListCard from "../../layout/cards";
-import SearchBar from "../../layout/home/searchBar";
 
 const useStyles = makeStyles((theme) => ({
   icon: {

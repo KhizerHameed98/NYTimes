@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
-import { useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
-import browserRoute from "../../../Constants/browserRoutes";
-import Loading from "../../layout/Loading";
 import { Grid, IconButton, makeStyles } from "@material-ui/core";
 import DrawerSideBar from "../../layout/articleDetail/sideBar";
 import { comments } from "../../Common/Comments/mockData";
+import browserRoute from "../../../Constants/browserRoutes";
+import Loading from "../../layout/Loading";
 
 import LaunchIcon from "@material-ui/icons/Launch";
 const useStyles = makeStyles((theme) => ({

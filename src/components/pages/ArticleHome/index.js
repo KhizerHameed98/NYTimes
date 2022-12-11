@@ -1,14 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
+import { debounce } from "lodash";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Loading from "../../layout/Loading";
-import { useDispatch, useSelector } from "react-redux";
-import { debounce } from "lodash";
-
 import SearchBar from "../../layout/home/searchBar";
 import { getArticleByQuery } from "../../../Redux/Reducers/ArticleDashboard";
 import ArticleCard from "../../layout/articleHome/articleCard";
