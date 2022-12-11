@@ -128,7 +128,7 @@ export default function ArticleHome() {
           ) : (
             <>
               <Grid container spacing={4}>
-                <ArticleCard />
+                <ArticleCard data={newsList} />
               </Grid>
               <Pagination
                 page={page}
