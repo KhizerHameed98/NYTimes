@@ -22,11 +22,15 @@ export default function PaginationControlled({
   rowsPerPage,
 }) {
   const classes = useStyles();
-
+  const apiTotalPageRange = 200;
   return (
     <div className={classes.root}>
       <Pagination
-        count={Math.ceil(totalCount / rowsPerPage)}
+        count={
+          Math.ceil(totalCount / rowsPerPage) < apiTotalPageRange
+            ? Math.ceil(totalCount / rowsPerPage)
+            : apiTotalPageRange
+        }
         page={page}
         onChange={handleChange}
       />

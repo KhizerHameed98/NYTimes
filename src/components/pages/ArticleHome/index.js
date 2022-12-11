@@ -58,17 +58,23 @@ export default function ArticleHome() {
   const { loading, newsList, totalCount } = useSelector(
     (state) => state.npReducers.articles
   );
-
+  const [loadingMain, setLoadingMain] = useState(true);
   const handleChangePage = (event, value) => {
+    setLoadingMain(true);
     setPage(value);
     dispatch(getArticleByQuery(query, value - 1));
   };
   const changeHandler = (event) => {
     setPage(1);
     setQuery(event);
-    dispatch(getArticleByQuery(event, 1));
+    dispatch(getArticleByQuery(event, 0));
   };
-  const debouncedChangeHandler = useCallback(debounce(changeHandler, 500), []);
+  useEffect(() => {
+    if (loading === false) {
+      setLoadingMain(false);
+    }
+  }, [loading]);
+  const debouncedChangeHandler = useCallback(debounce(changeHandler, 800), []);
 
   useEffect(() => {
     dispatch(getArticleByQuery("", page - 1));
@@ -105,14 +111,17 @@ export default function ArticleHome() {
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justifyContent="center">
-                <SearchBar onChangeHandler={debouncedChangeHandler} />
+                <SearchBar
+                  onChangeHandler={debouncedChangeHandler}
+                  setLoadingMain={setLoadingMain}
+                />
               </Grid>
             </div>
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
-          {loading ? (
+          {loadingMain ? (
             <Loading />
           ) : (
             <>

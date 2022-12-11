@@ -16,6 +16,11 @@ const useStyles = makeStyles((theme) => ({
   input: {
     marginLeft: theme.spacing(1),
     flex: 1,
+    width: "300px",
+    backgroundColor: "lightgray",
+    borderColor: "black",
+    padding: "10px",
+    borderRadius: "50px",
   },
   iconButton: {
     padding: 10,
@@ -26,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchBar({ onChangeHandler }) {
+export default function SearchBar({ onChangeHandler, setLoadingMain }) {
   const classes = useStyles();
   const top100Films = [
     { title: "The Shawshank Redemption", year: 1994 },
@@ -141,9 +146,9 @@ export default function SearchBar({ onChangeHandler }) {
         id="combo-box-demo"
         options={top100Films}
         getOptionLabel={(option) => option.title}
-        style={{ width: 300 }}
         onInputChange={(event, value) => {
-          console.log("hey khizer===", value);
+          setLoadingMain(true);
+          onChangeHandler(value);
         }}
         renderInput={(params) => {
           const { InputLabelProps, InputProps, ...rest } = params;
@@ -152,15 +157,12 @@ export default function SearchBar({ onChangeHandler }) {
             <InputBase
               {...params.InputProps}
               {...rest}
-              onChange={(event) => {
-                console.log("hey khizer===", event.target.value);
-              }}
+              className={classes.input}
+              placeholder=" What you are looking for?"
             />
           );
         }}
       />
-
-      {/* <Divider className={classes.divider} orientation="vertical" /> */}
     </div>
   );
 }

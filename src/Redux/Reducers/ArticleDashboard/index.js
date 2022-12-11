@@ -20,9 +20,9 @@ const slice = createSlice({
       state.loading = true;
     },
     gettingNewsSuccess: (state, action) => {
+      state.loading = false;
       state.newsList = action.payload?.docs;
       state.totalCount = action.payload?.meta?.hits;
-      state.loading = false;
     },
     gettingNewsFailed: (state, action) => {
       state.loading = false;
