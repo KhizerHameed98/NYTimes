@@ -9,9 +9,6 @@ import Loading from "../../layout/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { debounce } from "lodash";
 
-import { getTopNews } from "../../../Redux/Reducers/MainDashboard";
-
-import ListCard from "../../layout/cards";
 import SearchBar from "../../layout/home/searchBar";
 import Pagination from "../../Common/Pagination";
 import { getArticleByQuery } from "../../../Redux/Reducers/ArticleDashboard";
@@ -127,10 +124,8 @@ export default function ArticleHome() {
             <Loading />
           ) : (
             <>
-              <Grid container spacing={4}>
-                <ArticleCard data={newsList} />
-              </Grid>
-              <Pagination
+              <ArticleCard
+                data={newsList}
                 page={page}
                 handleChange={handleChangePage}
                 totalCount={totalCount}

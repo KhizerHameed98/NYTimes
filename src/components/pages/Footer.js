@@ -40,7 +40,7 @@ const Footer = () => {
       <Typography variant="body2" color="textSecondary" align="center">
         {"Copyright © "}
         <NavLink color="inherit" to={browserRoute?.HOME}>
-          Your Website
+          NYTimes
         </NavLink>{" "}
         {new Date().getFullYear()}
         {"."}
@@ -52,7 +52,7 @@ const Footer = () => {
       {/* Footer */}
       <footer className={classes.footer} style={{ marginTop: "100px" }}>
         <Typography variant="h6" align="center" gutterBottom>
-          Footer
+          NY Times
         </Typography>
         <Typography
           variant="subtitle1"
@@ -60,7 +60,8 @@ const Footer = () => {
           color="textSecondary"
           component="p"
         >
-          Something here to give the footer a purpose!
+          Its strength is in its editorial excellence; it has never been the
+          largest newspaper in terms of circulation.
         </Typography>
         <Copyright />
       </footer>
