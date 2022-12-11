@@ -3,8 +3,6 @@ import genericAxiosCall from "../../../AxiosConfig/genericAxiosCall";
 import { serverRoutes } from "../../../Constants/serverRoutes";
 import { handleError } from "../../../middlewares/errorHandler";
 import { updateSearchHistory } from "../UserReducer";
-// import { serverRoutes } from "../../../Constants/serverRoutes";
-// import { handleError } from "../../../middlewares/errorHandler";
 //////////////////////////////////////////////////////////////
 //                      Reducers
 //////////////////////////////////////////////////////////////

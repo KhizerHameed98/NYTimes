@@ -5,6 +5,7 @@ import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import Home from "../pages/Home";
 import "@testing-library/jest-dom";
+import ListCard from "../layout/cards";
 
 describe("Home", () => {
   const middlewares = [thunk];

@@ -50,7 +50,3 @@ Assignment React-App to fetch NYTimes api and render the output accordingly
    # it will place all files needed for deployment into the /dist directory
    npm run test
    ```
-
-## Issues
-
-Find a bug or want to request a new feature? Please let me know by submitting an issue.

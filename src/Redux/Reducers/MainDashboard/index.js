@@ -2,8 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import genericAxiosCall from "../../../AxiosConfig/genericAxiosCall";
 import { serverRoutes } from "../../../Constants/serverRoutes";
 import { handleError } from "../../../middlewares/errorHandler";
-// import { serverRoutes } from "../../../Constants/serverRoutes";
-// import { handleError } from "../../../middlewares/errorHandler";
 //////////////////////////////////////////////////////////////
 //                      Reducers
 //////////////////////////////////////////////////////////////

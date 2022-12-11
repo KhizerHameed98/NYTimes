@@ -108,7 +108,7 @@ export const loginRequest = (data) => (dispatch) => {
     })
     .catch((error) => {
       dispatch(loginFailed());
-      handleError(error, "User doesn't exist");
+      handleError(error, "Something went wrong");
     });
 };
 
