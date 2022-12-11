@@ -11,7 +11,8 @@ export const serverRoutes = {
   GET_TOP_NEWS_WORLD: "https://api.nytimes.com/svc/topstories/v2/world.json",
   GET_ARTICLE_SEARCH:
     "https://api.nytimes.com/svc/search/v2/articlesearch.json",
+  IMAGE_LINK: "https://static01.nyt.com",
 };
 export const API_KEY = process.env.REACT_APP_API_KEY
   ? process.env.REACT_APP_API_KEY
-  : "ncz2cdAWX9gKfv3ER17403MkLeoGhmAq";
+  : "Pq1xoEMDbJArCZrzJT10XvwZEc6DOW00";

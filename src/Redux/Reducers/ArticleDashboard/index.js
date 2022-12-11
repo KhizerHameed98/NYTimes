@@ -11,17 +11,17 @@ import { handleError } from "../../../middlewares/errorHandler";
 const slice = createSlice({
   name: "articles",
   initialState: {
-    loading: false,
+    loading: true,
     newsList: null,
-    listByState: "All",
+    totalCount: null,
   },
   reducers: {
     gettingNewsRequested: (state, action) => {
       state.loading = true;
     },
     gettingNewsSuccess: (state, action) => {
-      state.newsList = action.payload;
-      state.listByState = action.payload.listByState;
+      state.newsList = action.payload?.docs;
+      state.totalCount = action.payload?.meta?.hits;
       state.loading = false;
     },
     gettingNewsFailed: (state, action) => {
@@ -36,28 +36,19 @@ const { gettingNewsRequested, gettingNewsSuccess, gettingNewsFailed } =
 /////////////////////////////////////////////////////////////////////
 //                      Actions
 /////////////////////////////////////////////////////////////////////
-export const getTopNews = (listBy) => (dispatch, getState) => {
+export const getArticleByQuery = (query, page) => (dispatch, getState) => {
   let url;
-  switch (listBy) {
-    case "All":
-      url = serverRoutes?.GET_TOP_NEWS_HOME;
-      break;
-    case "World":
-      url = serverRoutes?.GET_TOP_NEWS_WORLD;
-      break;
-    case "Science":
-      url = serverRoutes?.GET_TOP_NEWS_SCIENCE;
-      break;
-    default:
-      break;
-  }
-  dispatch(gettingNewsRequested());
 
-  genericAxiosCall(url ? url : serverRoutes?.GET_TOP_NEWS_HOME, "get", "", "")
+  dispatch(gettingNewsRequested());
+  let params = {
+    page: page ? page : 0,
+    q: query ? query : "",
+  };
+  genericAxiosCall(serverRoutes?.GET_ARTICLE_SEARCH, "get", "", params)
     .then((res) => {
       if (res.data.status) {
-        let data = res.data.results;
-        data.listByState = listBy;
+        let data = res.data.response;
+
         dispatch(gettingNewsSuccess(data));
       }
     })

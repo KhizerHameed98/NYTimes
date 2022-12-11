@@ -92,6 +92,7 @@
 .tagsList li {
   margin-bottom: 20px;
 }
+
 /* Responsive */
 
 @media screen and (min-width: 1900px) and (max-width: 2250px) {

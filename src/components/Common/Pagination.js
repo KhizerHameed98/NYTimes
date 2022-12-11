@@ -1,27 +1,35 @@
-import React, { useState } from "react";
-import TablePagination from "@material-ui/core/TablePagination";
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import Pagination from "@material-ui/lab/Pagination";
 
-export default function TablePaginationDemo() {
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > * + *": {
+      marginTop: theme.spacing(4),
+    },
+    marginTop: "50px",
+    display: "flex",
+    justifyContent: "center",
+  },
+}));
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
+export default function PaginationControlled({
+  page,
+  setPage,
+  handleChange,
+  totalCount,
+  rowsPerPage,
+}) {
+  const classes = useStyles();
 
   return (
-    <TablePagination
-      component="div"
-      count={100}
-      page={page}
-      onPageChange={handleChangePage}
-      rowsPerPage={rowsPerPage}
-      onRowsPerPageChange={handleChangeRowsPerPage}
-    />
+    <div className={classes.root}>
+      <Pagination
+        count={Math.ceil(totalCount / rowsPerPage)}
+        page={page}
+        onChange={handleChange}
+      />
+    </div>
   );
 }

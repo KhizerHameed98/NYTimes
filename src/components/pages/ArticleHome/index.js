@@ -13,6 +13,9 @@ import { getTopNews } from "../../../Redux/Reducers/MainDashboard";
 
 import ListCard from "../../layout/cards";
 import SearchBar from "../../layout/home/searchBar";
+import Pagination from "../../Common/Pagination";
+import { getArticleByQuery } from "../../../Redux/Reducers/ArticleDashboard";
+import ArticleCard from "../../layout/articleHome/articleCard";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -50,34 +53,26 @@ export default function ArticleHome() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [query, setQuery] = useState("");
+  const [page, setPage] = React.useState(1);
 
-  const { loading, newsList, listByState } = useSelector(
-    (state) => state.npReducers.dashboard
+  const { loading, newsList, totalCount } = useSelector(
+    (state) => state.npReducers.articles
   );
-  const listByEnum = {
-    All: "All",
-    World: "World",
-    Science: "Science",
+
+  const handleChangePage = (event, value) => {
+    setPage(value);
+    dispatch(getArticleByQuery(query, value - 1));
   };
-  const [listBy, setListBy] = useState(
-    listByState ? listByState : listByEnum?.All
-  );
   const changeHandler = (event) => {
-    console.log("hey khizer===", event);
-    setQuery(event.target.value);
+    setPage(1);
+    setQuery(event);
+    dispatch(getArticleByQuery(event, 1));
   };
   const debouncedChangeHandler = useCallback(debounce(changeHandler, 500), []);
 
   useEffect(() => {
-    if (!newsList) {
-      dispatch(getTopNews(listBy));
-    }
+    dispatch(getArticleByQuery("", page - 1));
   }, []);
-
-  const toolChangeHandle = (value) => {
-    setListBy(value);
-    dispatch(getTopNews(value));
-  };
   return (
     <React.Fragment>
       <CssBaseline />
@@ -117,17 +112,24 @@ export default function ArticleHome() {
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
-          <Grid container spacing={4}>
-            {loading ? (
-              <Loading />
-            ) : (
-              <ListCard data={newsList} classes={classes} />
-            )}
-          </Grid>
+          {loading ? (
+            <Loading />
+          ) : (
+            <>
+              <Grid container spacing={4}>
+                <ArticleCard />
+              </Grid>
+              <Pagination
+                page={page}
+                setPage={setPage}
+                handleChange={handleChangePage}
+                totalCount={totalCount}
+                rowsPerPage={10}
+              />
+            </>
+          )}
         </Container>
       </main>
-
-      {/* End footer */}
     </React.Fragment>
   );
 }
