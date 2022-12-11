@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import { serverRoutes } from "../../Constants/serverRoutes";
 import browserRoute from "../../Constants/browserRoutes";
 import { handleError } from "../../middlewares/errorHandler";
+import { decodePassword, encodePassword } from "../../components/Common/Utils";
 
 //////////////////////////////////////////////////////////////
 //                      Reducers
@@ -81,7 +82,6 @@ export const loginRequest = (data) => (dispatch) => {
   dispatch(loginRequested());
 
   axios({
-    // Endpoint to send files
     url: serverRoutes?.SIGNIN,
     method: "POST",
     headers: {
@@ -92,15 +92,14 @@ export const loginRequest = (data) => (dispatch) => {
     data: data,
   })
     .then((res) => {
-      let d = {
+      let obj = {
         userToken: res?.data?.access_token,
         email: data?.email,
-        password: data?.password,
+        password: encodePassword(data?.password),
       };
-      // setInterval(function () {
-      //   console.log("hey khizer ");
-      // }, 3000);
-      dispatch(userData(res?.data?.access_token));
+      refreshToken(obj);
+
+      dispatch(userData(obj));
 
       dispatch(loginReceived());
       toast.success("Logged In Successfully", {
@@ -117,7 +116,6 @@ export const registerRequest = (data) => (dispatch) => {
   dispatch(userRegisteringRequest());
 
   axios({
-    // Endpoint to send files
     url: serverRoutes?.SIGNUP,
     method: "POST",
     headers: {
@@ -128,7 +126,12 @@ export const registerRequest = (data) => (dispatch) => {
     data: data,
   })
     .then((res) => {
-      dispatch(userData(res?.data?.access_token));
+      let obj = {
+        userToken: res?.data?.access_token,
+        email: data?.email,
+        password: data?.password,
+      };
+      dispatch(userData(obj));
       dispatch(userRegistered());
       toast.success("Registered Successfully", {
         position: toast.POSITION.BOTTOM_RIGHT,
@@ -141,8 +144,6 @@ export const registerRequest = (data) => (dispatch) => {
 };
 
 export const logoutUserRequest = () => (dispatch) => {
-  // window.localStorage.clear();
-
   dispatch(updateUserToken(""));
   dispatch(logouttoInitial());
 
@@ -152,4 +153,27 @@ export const logoutUserRequest = () => (dispatch) => {
   window.localStorage.removeItem("persist:root");
   window.localStorage.removeItem("userToken");
   window.location.href = browserRoute?.LOGIN;
+};
+
+const refreshToken = (user) => {
+  setInterval(function () {
+    getToken(user);
+  }, 3000);
+};
+
+const getToken = (user) => {
+  const data = { email: user.email, password: decodePassword(user.password) };
+  console.log("hey khizer===", data);
+  // axios({
+  //   url: serverRoutes?.SIGNIN,
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     "Access-Control-Allow-Origin": "*",
+  //   },
+
+  //   data: data,
+  // })
+  //   .then((res) => {})
+  //   .catch((error) => {});
 };

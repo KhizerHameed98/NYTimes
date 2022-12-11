@@ -16,11 +16,12 @@ export const UserReducer = createSlice({
 
     userData(state, action) {
       const { payload } = action;
+      const { userToken } = payload;
       state = {
         ...state,
-        userToken: payload,
+        ...payload,
       };
-      window.localStorage.setItem("userToken", payload);
+      window.localStorage.setItem("userToken", userToken);
       return state;
     },
 
@@ -35,7 +36,7 @@ export const UserReducer = createSlice({
       return { ...state, userToken: action.payload };
     },
     logouttoInitial(state, action) {
-      return { ...state, userToken: "", searchHistory: [] };
+      return { ...state, ...initialState };
     },
 
     updateSearchHistory(state, action) {
