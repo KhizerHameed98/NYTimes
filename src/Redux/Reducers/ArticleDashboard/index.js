@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import genericAxiosCall from "../../../AxiosConfig/genericAxiosCall";
 import { serverRoutes } from "../../../Constants/serverRoutes";
 import { handleError } from "../../../middlewares/errorHandler";
+import { updateSearchHistory } from "../UserReducer";
 // import { serverRoutes } from "../../../Constants/serverRoutes";
 // import { handleError } from "../../../middlewares/errorHandler";
 //////////////////////////////////////////////////////////////
@@ -20,9 +21,9 @@ const slice = createSlice({
       state.loading = true;
     },
     gettingNewsSuccess: (state, action) => {
-      state.loading = false;
       state.newsList = action.payload?.docs;
       state.totalCount = action.payload?.meta?.hits;
+      state.loading = false;
     },
     gettingNewsFailed: (state, action) => {
       state.loading = false;
@@ -37,9 +38,9 @@ const { gettingNewsRequested, gettingNewsSuccess, gettingNewsFailed } =
 //                      Actions
 /////////////////////////////////////////////////////////////////////
 export const getArticleByQuery = (query, page) => (dispatch, getState) => {
-  let url;
-
   dispatch(gettingNewsRequested());
+  let currentState = getState().pReducers.user;
+  dispatch(updateSearchHistory({ query, currentState }));
   let params = {
     page: page ? page : 0,
     q: query ? query : "",
@@ -48,7 +49,6 @@ export const getArticleByQuery = (query, page) => (dispatch, getState) => {
     .then((res) => {
       if (res.data.status) {
         let data = res.data.response;
-
         dispatch(gettingNewsSuccess(data));
       }
     })

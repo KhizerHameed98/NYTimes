@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PaginationControlled({
   page,
-  setPage,
   handleChange,
   totalCount,
   rowsPerPage,

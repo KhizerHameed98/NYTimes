@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import {
-  updateApplicationToken,
+  logouttoInitial,
   updateUserToken,
   userData,
 } from "../Reducers/UserReducer";
@@ -135,8 +135,8 @@ export const logoutUserRequest = () => (dispatch) => {
   // window.localStorage.clear();
   // console.log("Logout_func--->>");
 
-  dispatch(updateApplicationToken(""));
   dispatch(updateUserToken(""));
+  dispatch(logouttoInitial());
 
   // just for track user history
   // saveLogForLogActivity("Successfully logged out...");

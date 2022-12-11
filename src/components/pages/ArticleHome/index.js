@@ -58,6 +58,7 @@ export default function ArticleHome() {
   const { loading, newsList, totalCount } = useSelector(
     (state) => state.npReducers.articles
   );
+  const { searchHistory } = useSelector((state) => state.pReducers.user);
   const [loadingMain, setLoadingMain] = useState(true);
   const handleChangePage = (event, value) => {
     setLoadingMain(true);
@@ -112,6 +113,7 @@ export default function ArticleHome() {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justifyContent="center">
                 <SearchBar
+                  searchHistory={searchHistory}
                   onChangeHandler={debouncedChangeHandler}
                   setLoadingMain={setLoadingMain}
                 />
@@ -130,7 +132,6 @@ export default function ArticleHome() {
               </Grid>
               <Pagination
                 page={page}
-                setPage={setPage}
                 handleChange={handleChangePage}
                 totalCount={totalCount}
                 rowsPerPage={10}

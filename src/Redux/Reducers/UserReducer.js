@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   userToken: "",
+  searchHistory: [],
 };
-
+const searchLimit = 5;
 export const UserReducer = createSlice({
   name: "user",
   initialState,
@@ -31,6 +32,29 @@ export const UserReducer = createSlice({
     updateUserToken(state, action) {
       return { ...state, userToken: action.payload };
     },
+    logouttoInitial(state, action) {
+      return { ...state, userToken: "", searchHistory: [] };
+    },
+
+    updateSearchHistory(state, action) {
+      const { query, currentState } = action.payload;
+      const { searchHistory } = currentState;
+      if (query && !searchHistory?.includes(query)) {
+        let arr = [];
+        let tempArr = [...searchHistory];
+        if (tempArr?.length >= searchLimit) {
+          tempArr.shift();
+          tempArr.push(query.toString());
+          arr = tempArr;
+        } else if (tempArr?.length > 0 && tempArr?.length < searchLimit) {
+          tempArr.push(query.toString());
+          arr = tempArr;
+        } else {
+          arr.push(query.toString());
+        }
+        return { ...state, searchHistory: arr };
+      }
+    },
   },
 });
 
@@ -40,5 +64,7 @@ export const {
   updateUserName,
   updateLoginUserData,
   updateUserToken,
+  logouttoInitial,
+  updateSearchHistory,
 } = UserReducer.actions;
 export default UserReducer.reducer;
