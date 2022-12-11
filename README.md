@@ -24,13 +24,12 @@ Assignment React-App to fetch NYTimes api and render the output accordingly
    git clone https://github.com/KhizerHameed98/NYTimes.git
    ```
 
-3. Change the name of example.env file to .env .
+3. Rename example.env to .env
 
-4. To run the testing, you can run:
+4. From the project's root directory, install the required packages (dependencies):
 
    ```sh
-   # it will place all files needed for deployment into the /dist directory
-   npm run test
+   npm install
    ```
 
 5. To run and test the app on your local machine (http://localhost:3000):
