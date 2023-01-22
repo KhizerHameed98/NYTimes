@@ -127,7 +127,7 @@ export const registerRequest = (data) => (dispatch) => {
       let obj = {
         userToken: res?.data?.access_token,
         email: data?.email,
-        password: data?.password,
+        password: encodePassword(data?.password),
       };
       dispatch(userData(obj));
       dispatch(userRegistered());
@@ -150,6 +150,8 @@ export const logoutUserRequest = () => (dispatch) => {
 
   window.localStorage.removeItem("persist:root");
   window.localStorage.removeItem("userToken");
+  window.localStorage.removeItem("userTokenExpiry");
+
   window.location.href = browserRoute?.LOGIN;
 };
 

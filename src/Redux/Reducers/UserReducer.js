@@ -11,7 +11,14 @@ export const UserReducer = createSlice({
   initialState,
   reducers: {
     updateApplicationToken(state, action) {
-      return { ...state, applicationToken: action.payload };
+      window.localStorage.setItem("userToken", action.payload);
+      window.localStorage.setItem(
+        "userTokenExpiry",
+        new Date(new Date().setMinutes(new Date().getMinutes() + 5))
+      );
+      console.log("hey khizer2===", action.payload);
+
+      return { ...state, userToken: action.payload };
     },
 
     userData(state, action) {
@@ -22,6 +29,11 @@ export const UserReducer = createSlice({
         ...payload,
       };
       window.localStorage.setItem("userToken", userToken);
+      window.localStorage.setItem(
+        "userTokenExpiry",
+        new Date(new Date().setMinutes(new Date().getMinutes() + 5))
+      );
+
       return state;
     },
 

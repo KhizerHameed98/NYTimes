@@ -1,11 +1,10 @@
 import axios from "axios";
 
 import { toast } from "react-toastify";
+// import store from "../Redux/store/configStore";
 
 import { SERVER_URL } from "./../Constants/serverRoutes";
 // import {  serverRoutes } from "./../Constants/serverRoutes";
-
-// import configStore from "../store/configStore";
 
 const instance = axios.create({
   baseURL: SERVER_URL,
@@ -15,7 +14,8 @@ const instance = axios.create({
   },
 });
 instance.interceptors.request.use((x) => {
-  // const { userToken } = configStore.getState().pReducers.user;
+  //Token from redux
+  // const { userToken } = store.getState().pReducers.user;
 
   //Token
   // const userToken = window.localStorage.getItem("userToken");
