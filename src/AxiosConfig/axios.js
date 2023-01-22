@@ -16,6 +16,8 @@ const instance = axios.create({
 });
 instance.interceptors.request.use((x) => {
   // const { userToken } = configStore.getState().pReducers.user;
+
+  //Token
   // const userToken = window.localStorage.getItem("userToken");
   // x.headers.Authorization = `Bearer ${userToken}`;
   // x.headers["X-Version"] = "1.0";
