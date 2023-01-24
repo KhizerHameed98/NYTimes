@@ -83,10 +83,10 @@ export const loginRequest = (data) => (dispatch) => {
   axios({
     url: serverRoutes?.SIGNIN,
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    },
+    // headers: {
+    //   "Content-Type": "application/json",
+    //   "Access-Control-Allow-Origin": "*",
+    // },
 
     data: data,
   })
